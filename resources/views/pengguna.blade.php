@@ -183,9 +183,9 @@
               <th>User ID</th>
               <th>Name</th>
               <th>Email</th>
-              <!-- <th>Phone</th> -->
+
               <th>Address</th>
-              <!-- <th>Subscription</th> -->
+
               <th>Action</th>
               </tr>
             </thead>
@@ -195,14 +195,11 @@
               <td>{{ $u->id }}</td>
               <td>{{ $u->name }}</td>
               <td>{{ $u->email }}</td>
-              <!-- <td>{{ $u->phone }}</td> -->
+
               <td>{{ $u->locations }}</td>
-              <!-- <td>{{ $u->subscription }}</td> -->
+        
               <td>
-                <!-- <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#suspend"
-                  data-email="{{ $u->email }}" data-name="{{ $u->name }}">
-                    {{ 'Suspend' }}
-                  </button> -->
+
                   <button type="button" class="btn btn-success" data-toggle="modal" data-target="#shoutOut"
                   data-email="{{ $u->email }}" data-name="{{ $u->name }}">
                     {{ 'Shout Out' }}
