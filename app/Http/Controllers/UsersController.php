@@ -6,6 +6,7 @@ use App\Models\Buyer;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Notifications\brodcast;
+use App\Notifications\shoutout;
 
 class UsersController extends Controller
 {
@@ -45,5 +46,16 @@ class UsersController extends Controller
       }
       return redirect('/');
 
+    }
+    public function shoutOut(Request $coba){
+
+      $users = User::where('email',$coba->email)->first();
+      $enrollmentData = [
+
+        'subyek' =>$coba->subyek,
+        'pesan' =>$coba->pesan,
+      ];
+        $users->notify(new shoutOut($enrollmentData));
+        return redirect('/users');
     }
 }

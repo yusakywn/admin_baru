@@ -2,9 +2,7 @@
 
 @section('content')
   <!-- Main Sidebar Container -->
-<<<<<<< HEAD
- 
-=======
+
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
     <a href="" class="brand-link">
@@ -58,17 +56,15 @@
             </ul>
             <ul class="nav nav-pills nav-sidebar flex-column">
                 <li class="nav-item">
-<<<<<<< HEAD
                     <a href="#" class="nav-link">
                     <i class="nav-icon fas fa-video"></i>
                     <p>
-                        Data Freelancer
-=======
+                      Data Freelancer
+                    </p>
                     <a href="/seler" class="nav-link">
                     <i class="nav-icon fas fa-users"></i>
                     <p>
                         Data Seler
->>>>>>> 515c47969492d6bdf5310beba0a8b9f157ba0a9a
                     </p>
                     </a>
                 </li>
@@ -119,7 +115,6 @@
     </div>
     <!-- /.sidebar -->
   </aside>
->>>>>>> 22fe5f6d028e685388695536d3ae84c295868fe6
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper bg-white">
   <!-- Content Header (Page header) -->

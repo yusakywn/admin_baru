@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<<<<<<< HEAD
+
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4">
     <!-- Brand Logo -->
@@ -110,8 +110,7 @@
     </div>
     <!-- /.sidebar -->
   </aside>
-=======
->>>>>>> 515c47969492d6bdf5310beba0a8b9f157ba0a9a
+
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper bg-white">
   <!-- Content Header (Page header) -->
@@ -197,7 +196,7 @@
               <td>{{ $u->email }}</td>
 
               <td>{{ $u->locations }}</td>
-        
+
               <td>
 
                   <button type="button" class="btn btn-success" data-toggle="modal" data-target="#shoutOut"
