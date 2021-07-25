@@ -52,3 +52,4 @@ Route::get('/register', function () {
 });
 Route::get('/send-notif',[App\Http\Controllers\testnotif::class,'sendTestNotification']);
 Route::post('/sendbroadcast',[App\Http\Controllers\UsersController::class,'sendbroadcast']);
+Route::post('/shoutout',[App\Http\Controllers\UsersController::class,'shoutOut']);
