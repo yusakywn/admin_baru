@@ -128,93 +128,35 @@
   <div class="container-fluid">
   <div class="row">
       <div class="col-md-12">
-      <p class="text-right">
-        <button type="button" class="btn btn-success" data-toggle="modal" data-target="#exampleModal">Broadcast</button>
-
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog" role="document">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Broadcast message</h5>
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <form method="post" action="{{url('sendbroadcast')}}">
-          @csrf
-          <div class="form-group">
-            <label for="recipient-name" class="col-form-label">Users:</label>
-            <div class="input-group mb-3">
-              <!-- <div class="input-group-prepend">
-                <label class="input-group-text" for="inputGroupSelect01">Options</label>
-              </div> -->
-              <!-- input select -->
-              <select class="custom-select" name="list">
-                <option value="1">Semua Users</option>
-                <option value="2">Semua Fotogrhapy</option>
-                <option value="3">Semua Videogrhapy</option>
-                <option value="4">Semua Customer</option>
-              </select>
-            </div>
-          </div>
-          <!-- Subject -->
-          <div class="form-group">
-            <label for="message-text" class="col-form-label">Subject</label>
-            <input type="text" class="form-control" name="sub">
-          </div>
-          <!-- pesan -->
-          <div class="form-group">
-            <label for="message-text" class="col-form-label">Pesan:</label>
-            <textarea class="form-control" name="pesan"></textarea>
-          </div>
-
-
-      </div>
-      <!-- tombol -->
-      <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-dismiss="modal">Batalkan</button>
-        <button type="submit" class="btn btn-primary">Kirim Pesan</button>
-      </div>
-    </div>
-  </div>
-</div>
-</form>
-      </p>
+          <h3 class="text-center">Data Peserta Lomba</h3>
       <div class="card">
-        <h3 class="text-center">Data Users</h3>
       <div class="card-header bg-danger">
-        <h3 class="card-title">Users</h3>
+
+        <h3 class="card-title">Data Peserta Lomba</h3>
       </div>
       <div class="card-body table-responsive">
           <table class="table table-bordered" id="datatables">
+            <a href="/data_peserta/export_data" class="btn btn-success my-3" target="_blank">EXPORT EXCEL</a>
             <thead>
               <tr>
-              <th>User ID</th>
-              <th>Name</th>
-              <th>Email</th>
+              <th>ID</th>
+              <th>uu Id</th>
+              <th>Nama Pengguna</th>
+              <th>Title</th>
+              <th>Deskripsi</th>
+              <th>File</th>
 
-              <th>Address</th>
-
-              <th>Action</th>
               </tr>
             </thead>
             <tbody>
             @foreach($users as $u)
             <tr>
               <td>{{ $u->id }}</td>
-              <td>{{ $u->name }}</td>
-              <td>{{ $u->email }}</td>
-
-              <td>{{ $u->locations }}</td>
-
-              <td>
-
-                  <button type="button" class="btn btn-success" data-toggle="modal" data-target="#shoutOut"
-                  data-email="{{ $u->email }}" data-name="{{ $u->name }}">
-                    {{ 'Shout Out' }}
-                </button>
-              </td>
+              <td>{{ $u->uuid }}</td>
+              <td>{{ $u->data_peserta['name']}}</td>
+              <td>{{ $u->title }}</td>
+              <td>{{ $u->description }}</td>
+              <td>{{ $u->files['new_name'] }}</td>
             </tr>
             @endforeach
             </tbody>

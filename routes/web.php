@@ -53,3 +53,14 @@ Route::get('/register', function () {
 Route::get('/send-notif',[App\Http\Controllers\testnotif::class,'sendTestNotification']);
 Route::post('/sendbroadcast',[App\Http\Controllers\UsersController::class,'sendbroadcast']);
 Route::post('/shoutout',[App\Http\Controllers\UsersController::class,'shoutOut']);
+
+Route::get('/freelancer', [App\Http\Controllers\UsersController::class, 'freelancer']);
+Route::get('/refunds/verifikasi/{id}', [App\Http\Controllers\UsersController::class, 'refunds_verifikasi']);
+Route::get('/penarikan/verifikasi/{id}', [App\Http\Controllers\UsersController::class, 'penarikan_verifikasi']);
+
+Route::get('/refunds', [App\Http\Controllers\UsersController::class, 'refunds']);
+Route::get('/penarikan', [App\Http\Controllers\UsersController::class, 'penarikan']);
+Route::get('/lomba', [App\Http\Controllers\UsersController::class, 'lomba']);
+Route::get('/data_peserta', [App\Http\Controllers\UsersController::class, 'data_peserta']);
+Route::get('/data_peserta',[App\Http\Controllers\data_pesertaController::class, 'index']);
+Route::get('/data_peserta/export_data', [App\Http\Controllers\data_pesertaController::class, 'export_data']);

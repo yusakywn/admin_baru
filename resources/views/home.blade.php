@@ -56,7 +56,7 @@
             </ul>
             <ul class="nav nav-pills nav-sidebar flex-column">
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="freelancer" class="nav-link">
                     <i class="nav-icon fas fa-video"></i>
                     <p>
                       Data Freelancer
@@ -81,7 +81,7 @@
             </ul>
             <ul class="nav nav-pills nav-sidebar flex-column">
                 <li class="nav-item">
-                    <a href="/#" class="nav-link">
+                    <a href="/refunds" class="nav-link">
                     <i class="nav-icon fas fa-edit"></i>
                     <p>
                         Refund
@@ -91,7 +91,7 @@
             </ul>
             <ul class="nav nav-pills nav-sidebar flex-column">
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a href="/penarikan" class="nav-link">
                     <i class="nav-icon fas fa-money-bill-alt"></i>
                     <p>
                       Data Penarikan
@@ -99,16 +99,26 @@
                     </a>
                 </li>
             </ul>
-            <!-- <ul class="nav nav-pills nav-sidebar flex-column">
+            <ul class="nav nav-pills nav-sidebar flex-column">
                 <li class="nav-item">
-                    <a href="/add/employees" class="nav-link">
-                    <i class="nav-icon fas fa-user-plus"></i>
+                    <a href="/lomba" class="nav-link">
+                    <i class="nav-icon fas fa-trophy"></i>
                     <p>
-                        Tambah Karyawan
+                        Lomba
                     </p>
                     </a>
                 </li>
-            </ul> -->
+            </ul>
+            <ul class="nav nav-pills nav-sidebar flex-column">
+                <li class="nav-item">
+                    <a href="/data_peserta" class="nav-link">
+                    <i class="nav-icon fas fa-user-friends"></i>
+                    <p>
+                        Data Peserta
+                    </p>
+                    </a>
+                </li>
+            </ul>
 
       </nav>
       <!-- /.sidebar-menu -->
@@ -179,17 +189,35 @@
         <th>Seller</th>
         <th>Harga</th>
         <th>Tanggal</th>
+        <th>Status</th>
         </tr>
       </thead>
       <tbody>
           @foreach($order as $a)
       <tr>
-        <td>{{ $a->order_id }}</td>
+        <td>{{ $a->id }}</td>
         <td>{{ $a->pengguna['name']}}</td>
         <td>{{$a->seller['name']}}</td>
-        <td>{{"Rp". number_format($a->harga,2,',','.')}}</td>
+        <td>{{"Rp". number_format($a->deal_price,0,',','.')}}</td>
           <td>{{ date_format(date_create($a->created_at),"M,d,Y H:i:a")
         }}</td>
+        <td>
+        @if($a->status==0)
+          {{"Menunggu pembayaran"}}
+        @elseif ($a->status==1)
+          {{"Projek dimulai"}}
+        @elseif ($a->status==2)
+          {{"Projek Diminta"}}
+        @elseif ($a->status==3)
+          {{"Dikembalikan"}}
+        @elseif ($a->status==4)
+          {{"Projek Disetujui"}}
+        @elseif ($a->status==5)
+          {{"Projek Selesai"}}
+        @elseif ($a->status==5)
+          {{"Projek Dibatalkan"}}
+        @endif
+        </td>
       </tr>
       @endforeach
       </tbody>
