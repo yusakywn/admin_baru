@@ -103,8 +103,9 @@ class UsersController extends Controller
       $users = lomba::all();
       return view('/lomba', ['users' => $users]);
     }
-    public function data_peserta(){
-      $users = data_peserta::all();
+    public function data_peserta($id){
+      $lomba = lomba::where('uuid', $id)->first();
+      $users = data_peserta::where('competition_id', $lomba->id)->get();
       return view('/data_peserta', ['users' => $users]);
     }
 

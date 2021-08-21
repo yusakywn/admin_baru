@@ -1,126 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-
-  <!-- Main Sidebar Container -->
-  <aside class="main-sidebar sidebar-dark-primary elevation-4">
-    <!-- Brand Logo -->
-    <a href="" class="brand-link">
-      <!-- <img src="https://assets.exova.id/img/1.png" alt="Exova Indonesia" class="brand-image img-circle elevation-3" -->
-           <!-- style="opacity: .8"> -->
-      <span class="brand-text font-weight-light">Exova Indonesia</span>
-    </a>
-    <div class="sidebar">
-      <!-- Sidebar Menu -->
-      <nav class="mt-2">
-        <ul class="nav nav-pills nav-sidebar flex-column">
-          <li class="nav-item">
-            <a href="/" class="nav-link active">
-              <i class="nav-icon fas fa-home"></i>
-              <p>
-                Dashboard
-              </p>
-            </a>
-          </li>
-        </ul>
-        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-          <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
-          <li class="nav-item has-treeview">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-layer-group"></i>
-              <p>
-                Layanan
-                <!-- <i class="right fas fa-angle-left"></i> -->
-              </p>
-            </a>
-            <!-- <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="/jasaexova" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Jasa Exova</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-        </ul> -->
-        <ul class="nav nav-pills nav-sidebar flex-column">
-                <li class="nav-item">
-                    <a href="/users" class="nav-link">
-                    <i class="nav-icon fas fa-users"></i>
-                    <p>
-                        Data Users
-                    </p>
-                    </a>
-                </li>
-            </ul>
-            <ul class="nav nav-pills nav-sidebar flex-column">
-                <li class="nav-item">
-                    <a href="freelancer" class="nav-link">
-                    <i class="nav-icon fas fa-video"></i>
-                    <p>
-                        Data Freelancer
-                    </p>
-                    </a>
-                </li>
-            </ul>
-            <ul class="nav nav-pills nav-sidebar flex-column">
-                <li class="nav-item">
-                    <a href="#" class="nav-link">
-                    <i class="nav-icon fas fa-box-open"></i>
-                    <p>
-                        Data Order
-                    </p>
-                    </a>
-                </li>
-            </ul>
-            <ul class="nav nav-pills nav-sidebar flex-column">
-                <li class="nav-item">
-                    <a href="/refunds" class="nav-link">
-                    <i class="nav-icon fas fa-edit"></i>
-                    <p>
-                        Refund
-                    </p>
-                    </a>
-                </li>
-            </ul>
-            <ul class="nav nav-pills nav-sidebar flex-column">
-                <li class="nav-item">
-                    <a href="/penarikan" class="nav-link">
-                    <i class="nav-icon fas fa-money-bill-alt"></i>
-                    <p>
-                      Data Penarikan
-                    </p>
-                    </a>
-                </li>
-            </ul>
-            <ul class="nav nav-pills nav-sidebar flex-column">
-                <li class="nav-item">
-                    <a href="/lomba" class="nav-link">
-                    <i class="nav-icon fas fa-trophy"></i>
-                    <p>
-                        Lomba
-                    </p>
-                    </a>
-                </li>
-            </ul>
-            <ul class="nav nav-pills nav-sidebar flex-column">
-                <li class="nav-item">
-                    <a href="/data_peserta" class="nav-link">
-                    <i class="nav-icon fas fa-user-friends"></i>
-                    <p>
-                        Data Peserta
-                    </p>
-                    </a>
-                </li>
-            </ul>
-
-      </nav>
-      <!-- /.sidebar-menu -->
-    </div>
-    <!-- /.sidebar -->
-  </aside>
-
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper bg-white">
   <!-- Content Header (Page header) -->
@@ -136,27 +16,32 @@
       </div>
       <div class="card-body table-responsive">
           <table class="table table-bordered" id="datatables">
-            <a href="/data_peserta/export_data" class="btn btn-success my-3" target="_blank">EXPORT EXCEL</a>
+            <a href="/data_peserta/export_data/{{ Request::segment(2) }}" class="btn btn-success my-3" target="_blank">Export Excel</a>
             <thead>
               <tr>
               <th>ID</th>
-              <th>uu Id</th>
-              <th>Nama Pengguna</th>
+              <th>Nama Peserta</th>
               <th>Title</th>
               <th>Deskripsi</th>
               <th>File</th>
-
+              <th>Tanggal Upload</th>
               </tr>
             </thead>
             <tbody>
             @foreach($users as $u)
             <tr>
               <td>{{ $u->id }}</td>
-              <td>{{ $u->uuid }}</td>
               <td>{{ $u->data_peserta['name']}}</td>
               <td>{{ $u->title }}</td>
               <td>{{ $u->description }}</td>
-              <td>{{ $u->files['new_name'] }}</td>
+              <td>
+                @if ($u->file_id == 0)
+                  <a target="_blank" href="{{ $u->url }}">Google Drive</a>
+                  @else
+                  {{ $u->files['new_name'] }}
+                @endif
+              </td>
+              <td>{{ $u->created_at->format('F j, Y h:i a') }}</td>
             </tr>
             @endforeach
             </tbody>

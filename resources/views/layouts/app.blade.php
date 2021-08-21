@@ -125,7 +125,7 @@
             <nav class="mt-2">
                <ul class="nav nav-pills nav-sidebar flex-column">
                   <li class="nav-item">
-                     <a href="/" class="nav-link active">
+                     <a href="/" class="nav-link @if(Request::segment(1) == '') active @endif">
                         <i class="nav-icon fas fa-home"></i>
                         <p>
                            Dashboard
@@ -136,7 +136,7 @@
                <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                   <ul class="nav nav-pills nav-sidebar flex-column">
                      <li class="nav-item">
-                        <a href="/users" class="nav-link">
+                        <a href="{{ url('users') }}" class="nav-link @if(Request::segment(1) == 'users') active @endif">
                            <i class="nav-icon fas fa-users"></i>
                            <p>
                               Data Users
@@ -146,7 +146,7 @@
                   </ul>
                   <ul class="nav nav-pills nav-sidebar flex-column">
                      <li class="nav-item">
-                        <a href="#" class="nav-link">
+                        <a href="{{ url('freelancer') }}" class="nav-link @if(Request::segment(1) == 'freelancer') active @endif">
                            <i class="nav-icon fas fa-video"></i>
                            <p>
                               Data Freelancer
@@ -156,7 +156,7 @@
                   </ul>
                   <ul class="nav nav-pills nav-sidebar flex-column">
                      <li class="nav-item">
-                        <a href="#" class="nav-link">
+                        <a href="{{ url('orders') }}" class="nav-link @if(Request::segment(1) == 'orders') active @endif">
                            <i class="nav-icon fas fa-box-open"></i>
                            <p>
                               Data Order
@@ -166,7 +166,7 @@
                   </ul>
                   <ul class="nav nav-pills nav-sidebar flex-column">
                      <li class="nav-item">
-                        <a href="#" class="nav-link">
+                        <a href="{{ url('refunds') }}" class="nav-link @if(Request::segment(1) == 'refunds') active @endif">
                            <i class="nav-icon fas fa-edit"></i>
                            <p>
                               Refund
@@ -176,7 +176,7 @@
                   </ul>
                   <ul class="nav nav-pills nav-sidebar flex-column">
                      <li class="nav-item">
-                        <a href="#" class="nav-link">
+                        <a href="{{ url('penarikan') }}" class="nav-link @if(Request::segment(1) == 'penarikan') active @endif">
                            <i class="nav-icon fas fa-money-bill-alt"></i>
                            <p>
                               Data Penarikan
@@ -184,16 +184,16 @@
                         </a>
                      </li>
                   </ul>
-                  <!-- <ul class="nav nav-pills nav-sidebar flex-column">
+                  <ul class="nav nav-pills nav-sidebar flex-column">
                      <li class="nav-item">
-                         <a href="/add/employees" class="nav-link">
-                         <i class="nav-icon fas fa-user-plus"></i>
-                         <p>
-                             Tambah Karyawan
-                         </p>
-                         </a>
+                        <a href="{{ url('lomba') }}" class="nav-link @if(in_array(Request::segment(1), ['lomba', 'data_peserta'])) active @endif">
+                        <i class="nav-icon fas fa-trophy"></i>
+                        <p>
+                           Lomba
+                        </p>
+                        </a>
                      </li>
-                     </ul> -->
+                  </ul>
             </nav>
             <!-- /.sidebar-menu -->
          </div>
