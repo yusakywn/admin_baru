@@ -6,12 +6,14 @@ use Carbon\Carbon;
 use App\Models\data_peserta;
 use Illuminate\Contracts\View\View;
 use Maatwebsite\Excel\Concerns\FromView;
+use Maatwebsite\Excel\Concerns\WithEvents;
 use Maatwebsite\Excel\Concerns\WithMapping;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\ShouldAutoSize;
+use Maatwebsite\Excel\Events\AfterSheet;
 
-class data_pesertaExport implements FromCollection, ShouldAutoSize, WithMapping, WithHeadings
+class data_pesertaExport implements FromCollection, ShouldAutoSize, WithMapping, WithHeadings, WithEvents
 {
 
   public $id;
@@ -41,6 +43,16 @@ class data_pesertaExport implements FromCollection, ShouldAutoSize, WithMapping,
             $registration->files['new_name'],
             $registration->url,
             $registration->created_at->format('F j, Y h:i a')
+        ];
+    }
+
+    public function registerEvents(): array
+    {
+        return [
+            AfterSheet::class    => function(AfterSheet $event) {
+                $cellRange = 'A1:W1'; // All headers
+                $event->sheet->getDelegate()->getStyle($cellRange)->getFont()->setSize(14);
+            },
         ];
     }
 
