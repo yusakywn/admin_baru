@@ -40,6 +40,7 @@ class data_pesertaExport implements FromCollection, ShouldAutoSize, WithMapping,
             $registration->data_peserta['username'],
             $registration->title,
             $registration->description,
+            $registration->user_id,
             $registration->files['new_name'],
             $registration->url,
             $registration->created_at->format('F j, Y h:i a')
@@ -63,7 +64,8 @@ class data_pesertaExport implements FromCollection, ShouldAutoSize, WithMapping,
            'Username Peserta',
            'Title',
            'Deskripsi',
-           'File',
+           'Nama Folder',
+           'Nama File',
            'Link Google Drive',
            'Tanggal Upload'
         ] ;
