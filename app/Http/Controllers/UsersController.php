@@ -7,6 +7,12 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Notifications\brodcast;
 use App\Notifications\shoutout;
+use App\Notifications\refunds as refundss;
+use App\Notifications\penarikan as penarikann;
+use App\Models\refunds;
+use App\Models\penarikan;
+use App\Models\lomba;
+use App\Models\data_peserta;
 
 class UsersController extends Controller
 {
@@ -58,4 +64,48 @@ class UsersController extends Controller
         $users->notify(new shoutOut($enrollmentData));
         return redirect('/users');
     }
+    public function freelancer(){
+      $users = User::where('role_id','!=',1)->get();
+      return view('freelancer', ['users' => $users]);
+    }
+    public function refunds(){
+      $users = refunds::all();
+      return view('/refunds', ['users' => $users]);
+    }
+    public function penarikan(){
+      $users = penarikan::all();
+      return view('/penarikan', ['users' => $users]);
+    }
+
+    public function refunds_verifikasi($id)
+    {
+      refunds::where('id',$id)->update([
+        'status'=>1
+      ]);
+      $refunds=refunds::where('id',$id)->first();
+
+      $refunds->kontrak['pengguna']->notify(new refundss($refunds));
+      return back();
+    }
+
+    public function penarikan_verifikasi($id)
+    {
+    penarikan::where('id',$id)->update([
+        'status'=>1
+      ]);
+      $penarikan=penarikan::where('id',$id)->first();
+
+      $penarikan->pengguna->notify(new penarikann($penarikan));
+      return back();
+    }
+
+    public function lomba(){
+      $users = lomba::all();
+      return view('/lomba', ['users' => $users]);
+    }
+    public function data_peserta(){
+      $users = data_peserta::all();
+      return view('/data_peserta', ['users' => $users]);
+    }
+
 }

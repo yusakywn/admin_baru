@@ -65,17 +65,35 @@
         <th>Seller</th>
         <th>Harga</th>
         <th>Tanggal</th>
+        <th>Status</th>
         </tr>
       </thead>
       <tbody>
           @foreach($order as $a)
       <tr>
-        <td>{{ $a->order_id }}</td>
+        <td>{{ $a->id }}</td>
         <td>{{ $a->pengguna['name']}}</td>
         <td>{{$a->seller['name']}}</td>
-        <td>{{"Rp". number_format($a->harga,2,',','.')}}</td>
+        <td>{{"Rp". number_format($a->deal_price,0,',','.')}}</td>
           <td>{{ date_format(date_create($a->created_at),"M,d,Y H:i:a")
         }}</td>
+        <td>
+        @if($a->status==0)
+          {{"Menunggu pembayaran"}}
+        @elseif ($a->status==1)
+          {{"Projek dimulai"}}
+        @elseif ($a->status==2)
+          {{"Projek Diminta"}}
+        @elseif ($a->status==3)
+          {{"Dikembalikan"}}
+        @elseif ($a->status==4)
+          {{"Projek Disetujui"}}
+        @elseif ($a->status==5)
+          {{"Projek Selesai"}}
+        @elseif ($a->status==5)
+          {{"Projek Dibatalkan"}}
+        @endif
+        </td>
       </tr>
       @endforeach
       </tbody>
