@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\lomba;
 use App\Models\data_peserta;
+use Illuminate\Http\Request;
 use App\Exports\data_pesertaExport;
-use Maatwebsite\Excel\Facades\Excel;
 use App\Http\Controllers\Controller;
+use Maatwebsite\Excel\Facades\Excel;
 
 class data_pesertaController extends Controller
 {
@@ -16,9 +17,10 @@ class data_pesertaController extends Controller
   return view('/data_peserta', ['users' => $users]);
 }
 
-public function export_data()
+public function export_data($id)
 {
-  return Excel::download(new data_pesertaExport, 'data_peserta.xlsx');
+  $lomba = lomba::where('uuid', $id)->first();
+  return Excel::download(new data_pesertaExport($lomba->id), 'data_peserta.xlsx');
 }
 
 }

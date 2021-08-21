@@ -58,6 +58,6 @@ Route::middleware('auth')->group(function() {
     Route::get('/refunds', [App\Http\Controllers\UsersController::class, 'refunds']);
     Route::get('/penarikan', [App\Http\Controllers\UsersController::class, 'penarikan']);
     Route::get('/lomba', [App\Http\Controllers\UsersController::class, 'lomba']);
-    Route::get('/export_data/peserta', [App\Http\Controllers\data_pesertaController::class, 'export_data']);
+    Route::get('/export_data/peserta/{id}', [App\Http\Controllers\data_pesertaController::class, 'export_data']);
     Route::get('/data_peserta/{id}', [App\Http\Controllers\UsersController::class, 'data_peserta']);
 });

@@ -16,7 +16,7 @@
       </div>
       <div class="card-body table-responsive">
           <table class="table table-bordered" id="datatables">
-            <a href="{{ url('export_data/peserta') }}" class="btn btn-success my-3" target="_blank">Export Excel</a>
+            <a href="{{ url('export_data/peserta') . '/' . Request::segment(2) }}" class="btn btn-success my-3" target="_blank">Export Excel</a>
             <thead>
               <tr>
               <th>ID</th>
