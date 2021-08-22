@@ -22,9 +22,7 @@
               <th>User ID</th>
               <th>Name</th>
               <th>Email</th>
-
               <th>Address</th>
-
               <th>Action</th>
               </tr>
             </thead>
@@ -34,11 +32,8 @@
               <td>{{ $u->id }}</td>
               <td>{{ $u->name }}</td>
               <td>{{ $u->email }}</td>
-
               <td>{{ $u->locations }}</td>
-
               <td>
-
                   <button type="button" class="btn btn-success" data-toggle="modal" data-target="#shoutOut"
                   data-email="{{ $u->email }}" data-name="{{ $u->name }}">
                     {{ 'Shout Out' }}

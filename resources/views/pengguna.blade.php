@@ -33,8 +33,8 @@
               <!-- input select -->
               <select class="custom-select" name="list">
                 <option value="1">Semua Users</option>
-                <option value="2">Semua Fotogrhapy</option>
-                <option value="3">Semua Videogrhapy</option>
+                <option value="2">Semua Fotographer</option>
+                <option value="3">Semua Videographer</option>
                 <option value="4">Semua Customer</option>
               </select>
             </div>

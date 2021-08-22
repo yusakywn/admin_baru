@@ -61,7 +61,7 @@ class UsersController extends Controller
         'subyek' =>$coba->subyek,
         'pesan' =>$coba->pesan,
       ];
-        $users->notify(new shoutOut($enrollmentData));
+        $users->notify(new shoutout($enrollmentData));
         return redirect('/users');
     }
     public function freelancer(){
