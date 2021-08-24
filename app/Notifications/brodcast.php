@@ -44,9 +44,8 @@ class brodcast extends Notification implements ShouldQueue
           ->subject($this->enrollmentData['subject'])
           ->greeting('Hello Exovers!')
           ->line($this->enrollmentData['pesan'])
-          ->action('Kunjungi Exova','https://www.exova.id')
-          ->line('Semoga kita semua dalam keadaan sehat, bahagia, dan kaya raya');
-
+          ->action('Vote Sekarang','https://www.instagram.com/exova.id')
+          ->line('Semoga kita dalam keadaan sehat, bahagia, dan kaya raya');
     }
 
     /**

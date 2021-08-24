@@ -21,9 +21,10 @@ class UsersController extends Controller
     //     $this->middleware('auth');
     // }
 
-    public function users() {
-        $users = Buyer::all();
-        return view('/pengguna', ['users' => $users]);
+    public function users(Request $request) {
+      $roleid = $request->get('user');
+      $users = User::all();
+      return view('pengguna', ['users' => $users]);
     }
     //notif
     public function sendbroadcast(Request $request)

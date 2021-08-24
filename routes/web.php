@@ -59,5 +59,7 @@ Route::middleware('auth')->group(function() {
     Route::get('/penarikan', [App\Http\Controllers\UsersController::class, 'penarikan']);
     Route::get('/lomba', [App\Http\Controllers\UsersController::class, 'lomba']);
     Route::get('/export_data/peserta/{id}', [App\Http\Controllers\data_pesertaController::class, 'export_data']);
+    Route::post('/add/certificate', [App\Http\Controllers\data_pesertaController::class, 'add_certificate']);
+    Route::post('/update/certificate', [App\Http\Controllers\data_pesertaController::class, 'update_certificate']);
     Route::get('/data_peserta/{id}', [App\Http\Controllers\UsersController::class, 'data_peserta']);
 });

@@ -114,7 +114,7 @@
          </nav>
       </div>
       <!-- Main Sidebar Container -->
-      <aside class="main-sidebar sidebar-dark-primary elevation-4">
+      <aside class="main-sidebar sidebar-dark-primary elevation-4 position-fixed">
          <!-- Brand Logo -->
          <a href="" class="brand-link">
             <img src="https://exova-v2.s3.us-east-2.amazonaws.com/icons/exova.png" alt="Exova Indonesia" class="brand-image img-circle elevation-3" style="opacity: .8">
