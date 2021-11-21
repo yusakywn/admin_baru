@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use Storage;
 use App\Models\lomba;
 use App\Models\data_peserta;
 use Illuminate\Http\Request;
 use App\Exports\data_pesertaExport;
 use App\Http\Controllers\Controller;
 use Maatwebsite\Excel\Facades\Excel;
-use Storage;
+use App\Notifications\SendCertificate;
 
 class data_pesertaController extends Controller
 {
@@ -32,6 +33,15 @@ public function update_certificate(Request $request)
   data_peserta::where('user_id', $request->userid)->update([
     'certificate' => 'events/competitions/certificate/' . $request->filename,
   ]);
+  return back();
+}
+
+public function sendCert() {
+  $data = data_peserta::get()->take(2);
+  foreach ($data as $key => $value) {
+    $value->data_peserta->notify(new SendCertificate($value));
+  }
+
   return back();
 }
 

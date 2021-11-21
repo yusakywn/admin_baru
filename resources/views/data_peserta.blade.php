@@ -11,13 +11,13 @@
           <h3 class="text-center">Data Peserta Lomba</h3>
       <div class="card">
       <div class="card-header bg-danger">
-
         <h3 class="card-title">Data Peserta Lomba</h3>
       </div>
       <div class="card-body table-responsive">
           <table class="table table-bordered" id="datatables">
             <a href="{{ url('export_data/peserta') . '/' . Request::segment(2) }}" class="mx-1 btn btn-success my-3" target="_blank">Export Excel</a>
             <a data-name="Add Certificate To All Participant" data-id="{{ Request::segment(2) }}" data-toggle="modal" data-target="#addCert" class="mx-1 btn text-white btn-info my-3" target="_blank">Add Certificate</a>
+            <a href="{{ url('send/certificate') }}" class="mx-1 btn text-white btn-danger my-3">Send Certificate</a>
             <thead>
               <tr>
               <th>ID</th>

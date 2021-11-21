@@ -64,6 +64,7 @@
         <th>Customer</th>
         <th>Seller</th>
         <th>Harga</th>
+        <th>Diskon</th>
         <th>Tanggal</th>
         <th>Status</th>
         </tr>
@@ -75,6 +76,7 @@
         <td>{{ $a->pengguna['name']}}</td>
         <td>{{$a->seller['name']}}</td>
         <td>{{"Rp". number_format($a->deal_price,0,',','.')}}</td>
+        <td>{{"Rp". number_format($a->fees,0,',','.')}}</td>
           <td>{{ date_format(date_create($a->created_at),"M,d,Y H:i:a")
         }}</td>
         <td>
